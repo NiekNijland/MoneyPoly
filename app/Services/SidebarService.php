@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Core\SidebarElement;
-use App\Enums\EmployeeRoleEnum;
+use App\Enums\PlayerRoleEnum;
 use Illuminate\Support\Facades\Auth;
 use Exception;
+use RuntimeException;
 
 final class SidebarService
 {
@@ -26,41 +27,16 @@ final class SidebarService
     {
         $sidebar = [
             new SidebarElement(
-                required_role: EmployeeRoleEnum::None(),
-                iconPath: 'icons/duotune/general/gen032.svg',
-                tooltip: __('sidebar.dashboard'),
+                required_roles: [PlayerRoleEnum::Normal(), PlayerRoleEnum::Both()],
+                iconPath: 'icons/duotune/finance/fin008.svg',
+                tooltip: __('player.player'),
                 route: 'dashboard',
             ),
             new SidebarElement(
-                required_role: EmployeeRoleEnum::None(),
-                iconPath: 'icons/duotune/general/gen013.svg',
-                tooltip: __('booking.bookings'),
-                route: 'booking',
-            ),
-            new SidebarElement(
-                required_role: EmployeeRoleEnum::ProjectManager(),
-                iconPath: 'icons/duotune/communication/com014.svg',
-                tooltip: __('employee.employees'),
-                route: 'employee',
-                subRoutes: [
-                    'employee.manage',
-                ]
-            ),
-            new SidebarElement(
-                required_role: EmployeeRoleEnum::ProjectManager(),
-                iconPath: 'icons/duotune/general/gen043.svg',
-                tooltip: __('activity.activities'),
-                route: 'activity',
-                subRoutes: [],
-            ),
-            new SidebarElement(
-                required_role: EmployeeRoleEnum::ProjectManager(),
-                iconPath: 'icons/duotune/general/gen009.svg',
-                tooltip: __('project.projects'),
-                route: 'project',
-                subRoutes: [
-                    'project.manage',
-                ],
+                required_roles: [PlayerRoleEnum::Normal(), PlayerRoleEnum::Both()],
+                iconPath: 'icons/duotune/finance/fin001.svg',
+                tooltip: __('game.bank'),
+                route: 'bank',
             ),
         ];
 
@@ -73,17 +49,16 @@ final class SidebarService
     private function applyPermissionFilter(array $sidebar): array
     {
         $filteredSidebar = [];
-        foreach ($sidebar as $element) {
-            if (($element->required_role !== EmployeeRoleEnum::None()) && Auth::check() && $element->required_role !== Auth::user()->role) {
-                continue;
-            }
 
-            if ($element->workspaceElement !== null && !$this->showToggle()) {
-                throw new Exception('Workspace items not allowed when toggle is disabled');
+        foreach ($sidebar as $element) {
+            $values = array_map(static fn ($role) => $role->value, $element->required_roles);
+            if (!in_array(Auth::user()->role->value, $values, true)) {
+                continue;
             }
 
             $filteredSidebar[] = $element;
         }
+
         return $filteredSidebar;
     }
 }

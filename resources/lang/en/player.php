@@ -2,6 +2,8 @@
 
 return [
     'player' => 'Player',
+    'players' => 'Players',
+
     'name' => 'Name',
     'your_name' => 'Your name',
 

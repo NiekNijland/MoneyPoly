@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="text-center mb-10">
-        <h1 class="text-dark mb-3">
+        <span class="text-dark mb-3 ls-5 font-weight-bolder" style="font-size: 5rem">
             {{ $token }}
-        </h1>
+        </span>
     </div>
     <div class="d-flex flex-wrap justify-content-center pb-lg-0">
         <a wire:click="$emit('SetToken', '{{ $token }}')" class="btn btn-lg btn-primary fw-bolder">

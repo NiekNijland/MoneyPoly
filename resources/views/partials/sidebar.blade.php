@@ -18,7 +18,7 @@
             <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid w-100 pt-5 pt-lg-0" id="kt_aside_nav">
                 @include('partials.sidebar.nav')
             </div>
-            @include('partials.sidebar.footer')
+            {{-- @include('partials.sidebar.footer') --}}
         </div>
         <div class="aside-secondary d-flex flex-row-fluid">
             @include('partials.sidebar.workspace')

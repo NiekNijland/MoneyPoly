@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
-use App\Actions\GetGameTokenAction;
-use App\Models\Game;
+use App\{
+    Actions\GetGameTokenAction,
+    Enums\GameStatus,
+    Models\Game,
+};
 
 final class GameService
 {
@@ -13,6 +16,7 @@ final class GameService
 
         return Game::create([
             'token' => $token,
+            'status' => GameStatus::Waiting(),
         ]);
     }
 }

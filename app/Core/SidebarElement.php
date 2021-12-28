@@ -2,16 +2,16 @@
 
 namespace App\Core;
 
-use App\Enums\EmployeeRoleEnum;
 use Exception;
+use RuntimeException;
 
-class SidebarElement
+final class SidebarElement
 {
     /**
      * @throws Exception
      */
-    final public function __construct(
-        public EmployeeRoleEnum  $required_role,
+    public function __construct(
+        public array  $required_roles,
         public string $iconPath,
         public string $tooltip,
         public ?WorkspaceElement $workspaceElement = null,
@@ -19,11 +19,11 @@ class SidebarElement
         public array $subRoutes = [],
     ) {
         if ($this->workspaceElement === null && $this->route === null) {
-            throw new Exception('invalid SidebarElement');
+            throw new RuntimeException('invalid SidebarElement');
         }
     }
 
-    final public function shouldHighlight(string $route): bool
+    public function shouldHighlight(string $route): bool
     {
         return $this->route === $route || in_array($route, $this->subRoutes, true);
     }

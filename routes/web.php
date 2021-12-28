@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\{
-    DashboardController,
-    JoinController,
-};
+use App\Http\Controllers\{BankController, DashboardController, JoinController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +19,10 @@ Route::group(['middleware' => 'auth'], function() {
         return redirect()->route('dashboard');
     });
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+
+    //todo: remove 0
+    Route::group(['middleware' => 'role:0,1,2'], function() {
+        Route::get('bank', [BankController::class, 'index'])->name('bank');
+    });
 });

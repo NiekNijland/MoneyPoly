@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Join;
 
+use App\Enums\PlayerRoleEnum;
 use App\Models\{Game, Player};
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -43,9 +44,12 @@ final class EnterNameComponent extends Component
 
         $player = Player::create([
             'name' => $this->name,
-            'game_id' => Game::where('token', $this->token)->firstOrFail()->id
+            'game_id' => Game::where('token', $this->token)->firstOrFail()->id,
+            'role' => PlayerRoleEnum::Normal(),
         ]);
 
         Auth::login($player);
+
+        $this->emit('PlayerLoggedIn');
     }
 }

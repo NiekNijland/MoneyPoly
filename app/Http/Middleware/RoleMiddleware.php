@@ -13,18 +13,15 @@ class RoleMiddleware
      * @description Handle an incoming request.
      * @param Request $request
      * @param Closure $next
-     * @param string $roleValue
+     * @param int ...$roleValues
      * @return mixed
      */
-    final public function handle(Request $request, Closure $next, string $roleValue): mixed
+    final public function handle(Request $request, Closure $next, int ...$roleValues): mixed
     {
-        $required_role = EmployeeRoleEnum::from((int) $roleValue);
-
-        if (Auth::user()->role === $required_role) {
+        if (in_array(Auth::user()->role->value, $roleValues, true)) {
             return $next($request);
         }
 
-        abort(401);
-        return null;
+        return abort(401);
     }
 }

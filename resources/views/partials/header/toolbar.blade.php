@@ -1,33 +1,29 @@
 <div class="d-flex flex-shrink-0">
-    <!--begin::Invite user-->
     <div class="d-flex ms-3">
-        <a href="#" class="btn btn-flex flex-center btn-bg-white btn-text-gray-500 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6" tooltip="New Member" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-            <!--begin::Svg Icon | path: assets/media/icons/duotune/arrows/arr075.svg-->
-            <span class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                 <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black"></rect>
-                                                 <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"></rect>
-                                                 </svg></span>
-            <!--end::Svg Icon-->
-            <span class="d-none d-md-inline">New Member</span>
+        <a
+            class="btn btn-flex flex-center btn-bg-white btn-text-gray-500 w-40px w-md-auto h-40px px-0"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-delay-hide="500"
+            title="{{ __('player.players') }}"
+        >
+            <span class="font-weight-bolder text-primary h2 align-bottom h-100 ms-3">5</span>
+            {!! $themeService->getSvgIcon('icons/duotune/communication/com014.svg', 'svg-icon-2 svg-icon-2hx svg-icon-primary ms-2') !!}
         </a>
     </div>
-    <!--end::Invite user-->
-
-    <!--begin::Create app-->
     <div class="d-flex ms-3">
-        <a href="#" class="btn btn-flex flex-center btn-bg-white btn-text-gray-500 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6" tooltip="New App" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">
-            <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen005.svg-->
-            <span class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                 <path opacity="0.3" d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM15 17C15 16.4 14.6 16 14 16H8C7.4 16 7 16.4 7 17C7 17.6 7.4 18 8 18H14C14.6 18 15 17.6 15 17ZM17 12C17 11.4 16.6 11 16 11H8C7.4 11 7 11.4 7 12C7 12.6 7.4 13 8 13H16C16.6 13 17 12.6 17 12ZM17 7C17 6.4 16.6 6 16 6H8C7.4 6 7 6.4 7 7C7 7.6 7.4 8 8 8H16C16.6 8 17 7.6 17 7Z" fill="black"></path>
-                                                 <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="black"></path>
-                                                 </svg></span>
-            <!--end::Svg Icon-->
-            <span class="d-none d-md-inline">New App</span>
+        <a
+            href="{{ route('leave') }}"
+            class="btn btn-flex flex-center btn-danger btn-text-gray-500 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-delay-hide="500"
+            title="{{ __('game.leave') }}"
+        >
+            {!! $themeService->getSvgIcon('icons/duotune/arrows/arr042.svg', 'svg-icon-2 svg-icon-2hx') !!}
         </a>
     </div>
-    <!--end::Create app-->
-
-    <!--begin::Chat-->
+    {{--
     <div class="d-flex align-items-center ms-3">
         <!--begin::Menu wrapper-->
         <div class="btn btn-icon btn-primary w-40px h-40px pulse pulse-white" id="kt_drawer_chat_toggle">
@@ -604,5 +600,5 @@
 
         <!--end::Menu wrapper-->
     </div>
-    <!--end::Chat-->
+    --}}
 </div>

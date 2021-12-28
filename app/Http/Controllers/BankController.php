@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
-final class DashboardController extends Controller
+final class BankController extends Controller
 {
     public function index(): View
     {
-        return view('pages.dashboard.index', [
+        return view('pages.bank.index', [
             'page_title' => Auth::user()->game->token,
         ]);
     }

@@ -32,10 +32,17 @@ final class EnterTokenComponent extends Component
     {
         $this->validate();
 
-        if (Game::where('status', GameStatus::Active())->exists()) {
-            $this->emit('SetToken', $this->token);
-        } else {
+        $gameStatus = Game::where('status', GameStatus::Waiting()->value)
+            ->where('token', $this->token)
+            ->select(['status'])
+            ->first()->status ?? null;
+
+        if ($gameStatus === null) {
             $this->emit('InvalidToken');
+        } else if ($gameStatus === GameStatus::Active()) {
+            $this->emit('GameAlreadyStarted');
+        } else if ($gameStatus === GameStatus::Waiting()) {
+            $this->emit('TokenIsValid', $this->token);
         }
     }
 }
