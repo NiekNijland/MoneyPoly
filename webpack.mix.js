@@ -184,30 +184,15 @@ mix.webpackConfig({
     mix.scripts(filePaths, `public/plugins/custom/${fileName}/${fileName}.bundle.js`);
 });
 
-function getDemos(pathDemos) {
-    // get possible demo from parameter command
-    let demos = [];
-    args.forEach((arg) => {
-        const demo = arg.match(/^demo.*/g);
-        if (demo) {
-            demos.push(demo[0]);
-        }
-    });
-    if (demos.length === 0) {
-        demos = ['demo1'];
-    }
-    return demos;
-}
-
 function getParameters() {
-    var possibleArgs = [
+    let possibleArgs = [
         'dark_mode', 'rtl'
     ];
-    for (var i = 0; i <= 13; i++) {
+    for (let i = 0; i <= 13; i++) {
         possibleArgs.push('demo' + i);
     }
 
-    var args = [];
+    let args = [];
     possibleArgs.forEach(function (key) {
         if (process.env['npm_config_' + key]) {
             args.push(key);

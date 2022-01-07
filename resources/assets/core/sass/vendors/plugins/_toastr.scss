@@ -3,6 +3,10 @@
 //
 
 // Base
+body #toast-container > div {
+    opacity: 1 !important;
+}
+
 .toast {
     transition: $transition-base;
     background-position: 1.5rem center #{'/*rtl:calc(100% - 1.5rem) center*/'} !important;
@@ -30,7 +34,7 @@
 	.toast-title {
 		font-size: 1.15rem;
 		font-weight: $font-weight-bold;
-        
+
         & + .toast-message {
             margin-top: 0.25rem;
         }
@@ -49,7 +53,7 @@
 
         .toast-close-button {
             @include svg-bg-icon(close, $success-inverse);
-        }    
+        }
     }
 
     &.toast-info {
@@ -58,7 +62,7 @@
 
         .toast-close-button {
             @include svg-bg-icon(close, $info-inverse);
-        } 
+        }
     }
 
     &.toast-warning {
@@ -67,7 +71,7 @@
 
         .toast-close-button {
             @include svg-bg-icon(close, $warning-inverse);
-        } 
+        }
     }
 
     &.toast-error {
@@ -76,7 +80,7 @@
 
         .toast-close-button {
             @include svg-bg-icon(close, $danger-inverse);
-        } 
+        }
     }
 }
 

@@ -20,3 +20,16 @@ window.KTToggle = require('../core/js/components/toggle.js');
 window.KTApp = require('../extended/js/layout/app.js');
 window.KTLayoutExplore = require('./layout/explore.js');
 window.KTLayoutHeader = require('./layout/header.js');
+
+import Echo from "laravel-echo"
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'DMS-PUSHER-KEY',
+    wsHost: window.location.hostname,
+    wsPort: 6001,
+    forceTLS: false,
+    disableStats: true,
+});

@@ -8,7 +8,7 @@
         >
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <a class="mb-12">
-                    <img alt="Logo" src="{{ asset('media/logos/dms-logo.png') }}" class="h-80px"/>
+                    {{-- <img alt="Logo" src="{{ asset('media/logos/logo.png') }}" class="h-80px"/> --}}
                 </a>
                 @yield('content')
             </div>

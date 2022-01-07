@@ -1,13 +1,15 @@
 <div class="d-flex flex-shrink-0">
     <div class="d-flex ms-3">
         <a
-            class="btn btn-flex flex-center btn-bg-white btn-text-gray-500 w-40px w-md-auto h-40px px-0"
+            class="btn btn-flex flex-center btn-bg-white btn-text-gray-500 w-lg-60px w-md-auto h-40px px-0"
             data-bs-toggle="tooltip"
             data-bs-placement="bottom"
             data-bs-delay-hide="500"
             title="{{ __('player.players') }}"
         >
-            <span class="font-weight-bolder text-primary h2 align-bottom h-100 ms-3">5</span>
+            <span class="font-weight-bolder text-primary h2 my-auto ms-3" id="player-count">
+                {{ $playerCount }}
+            </span>
             {!! $themeService->getSvgIcon('icons/duotune/communication/com014.svg', 'svg-icon-2 svg-icon-2hx svg-icon-primary ms-2') !!}
         </a>
     </div>

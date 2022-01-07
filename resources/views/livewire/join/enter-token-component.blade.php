@@ -16,13 +16,14 @@
     <div class="fv-row mb-10">
         <input
             wire:model.lazy="token"
-            class="form-control form-control-solid text-center"
+            class="form-control form-control-solid text-center fs-1 ls-5"
             placeholder="{{ __('game.token') }}"
             aria-label="{{ __('general.label_enter', ['value' => __('game.token')]) }}"
             type="text"
             id="token"
             autocomplete="off"
             autofocus
+            maxlength="6"
             style="text-transform: uppercase"
         />
         @error('token')

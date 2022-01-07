@@ -28,7 +28,7 @@
                 title: '{{ __('game.game_found') }}',
                 showCancelButton: false,
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 1500,
             }).then(() => {
                 Livewire.emit('SetToken', token);
             });

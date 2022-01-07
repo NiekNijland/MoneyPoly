@@ -1,4 +1,4 @@
-<div class="col-12 col-xl-2 bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+<div class="col-12 col-xl-2 w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto w-lg">
     @switch ($step)
         @case (0)
             @livewire('join.enter-token-component')

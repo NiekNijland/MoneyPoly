@@ -11,6 +11,8 @@ final class BankController extends Controller
     {
         return view('pages.bank.index', [
             'page_title' => Auth::user()->game->token,
+            'token' => Auth::user()->game->token,
+            'playerCount' => Auth::user()->game->players()->count(),
         ]);
     }
 }
