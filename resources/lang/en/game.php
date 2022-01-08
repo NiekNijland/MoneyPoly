@@ -5,6 +5,8 @@ return [
     'token' => 'Token',
 
     'bank' => 'Bank',
+    'the_bank' => 'the bank',
+    'free_parking' => 'free parking',
     'leader' => 'Leader',
 
     'leave' => 'Leave',
@@ -14,6 +16,8 @@ return [
 
     'enter_a_token_or' => 'Enter a token or',
     'create_a_game' => 'Create a game',
+
+    'send_to' => 'Send to',
 
     'game_not_found' => 'Game not found, check your token',
     'game_found' => 'Game found!',

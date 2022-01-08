@@ -19,6 +19,7 @@ final class Game extends Model
         'name',
         'token',
         'status',
+        'free_parking_money',
     ];
 
     public $casts = [

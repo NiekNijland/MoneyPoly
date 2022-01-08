@@ -16,7 +16,7 @@
             </div>
             <div class="content d-flex flex-column flex-column-fluid">
                 @hasSection('content')
-                    <div id="kt_content_container" class="container-xxl">
+                    <div id="kt_content_container" class="container-xxl h-100">
                         @yield('content')
                     </div>
                 @endif

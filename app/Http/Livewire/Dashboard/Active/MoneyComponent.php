@@ -12,9 +12,18 @@ final class MoneyComponent extends Component
 {
     public int $money;
 
+    public $listeners = [
+        'MoneyReceived' => 'loadData',
+    ];
+
     public function mount(): void
     {
-        $this->money = Auth::user()->money;
+        $this->loadData();
+    }
+
+    public function loadData(): void
+    {
+        $this->money = Auth::user()?->fresh()->money;
     }
 
     public function render(): View
