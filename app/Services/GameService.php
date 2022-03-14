@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\{
     Actions\GetGameTokenAction,
-    Enums\GameStatus,
+    Enums\GameStatusEnum,
     Events\GameStartedEvent,
     Models\Game,
     Models\Player,
@@ -19,14 +19,14 @@ final class GameService
         return Game::create([
             'token' => $token,
             'free_parking_money' => 0,
-            'status' => GameStatus::Waiting(),
+            'status' => GameStatusEnum::Waiting(),
         ]);
     }
 
     public function startGame(Game $game, Player $player): void
     {
         $game->update([
-            'status' => GameStatus::Active(),
+            'status' => GameStatusEnum::Active(),
         ]);
 
         GameStartedEvent::dispatch($game, $player);

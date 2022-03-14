@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Enums\PlayerRoleEnum;
 use App\Models\Base\User;
+use Database\Factories\PlayerFactory;
 use Hashids\Hashids;
-use Jenssegers\Mongodb\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Relations\BelongsTo;
 
 /**
@@ -14,9 +15,12 @@ use Jenssegers\Mongodb\Relations\BelongsTo;
  * @property int $money
  * @property PlayerRoleEnum $role
  * @property Game $game
+ * @method static PlayerFactory factory
  */
 class Player extends User
 {
+    use HasFactory;
+
     public $fillable = [
         'name',
         'game_id',

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Join;
 
-use App\Enums\GameStatus;
+use App\Enums\GameStatusEnum;
 use App\Models\Game;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -38,9 +38,9 @@ final class EnterTokenComponent extends Component
 
         if ($gameStatus === null) {
             $this->emit('InvalidToken');
-        } else if ($gameStatus === GameStatus::Active()) {
+        } else if ($gameStatus === GameStatusEnum::Active()) {
             $this->emit('GameAlreadyStarted');
-        } else if ($gameStatus === GameStatus::Waiting()) {
+        } else if ($gameStatus === GameStatusEnum::Waiting()) {
             $this->emit('TokenIsValid', $this->token);
         }
     }

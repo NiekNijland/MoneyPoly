@@ -2,19 +2,24 @@
 
 namespace App\Models;
 
-use App\Enums\GameStatus;
+use App\Enums\GameStatusEnum;
 use App\Models\Base\Model;
+use Database\Factories\GameFactory;
 use Jenssegers\Mongodb\Relations\{EmbedsOne, HasMany};
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property string $name
  * @property string $token
  * @property int $free_parking_money
- * @property GameStatus $status
+ * @property GameStatusEnum $status
  * @property GameSettings $settings
+ * @method static GameFactory factory
  */
 final class Game extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'token',
@@ -23,7 +28,7 @@ final class Game extends Model
     ];
 
     public $casts = [
-        'status' => GameStatus::class,
+        'status' => GameStatusEnum::class,
     ];
 
     public function players(): HasMany

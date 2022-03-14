@@ -9,7 +9,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self Active()
  * @method static self Closed()
  */
-final class GameStatus extends Enum
+final class GameStatusEnum extends Enum
 {
     public static function values(): array
     {
