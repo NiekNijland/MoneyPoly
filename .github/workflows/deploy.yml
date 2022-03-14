@@ -49,4 +49,4 @@ jobs:
       - name: Deploy
         uses: jbrooksuk/laravel-forge-action@v1.0.2
         with:
-          trigger_url: ${{ secrets.STAGING_TRIGGER_URL }}
+          trigger_url: ${{ secrets.TRIGGER_URL }}
