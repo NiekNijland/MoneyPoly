@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\{Authenticate,
     AzureRegisterMiddleware,
     EncryptCookies,
+    GameActiveMiddleware,
     PreventRequestsDuringMaintenance,
     RedirectIfAuthenticated,
     RoleMiddleware,
@@ -75,6 +76,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => Authenticate::class,
         'role' => RoleMiddleware::class,
+        'game.active' => GameActiveMiddleware::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

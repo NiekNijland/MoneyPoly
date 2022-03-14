@@ -31,3 +31,7 @@
     </div>
     @include('partials.scrolltop')
 @endsection
+
+@push('scripts')
+    @include('layouts.main-js')
+@endpush

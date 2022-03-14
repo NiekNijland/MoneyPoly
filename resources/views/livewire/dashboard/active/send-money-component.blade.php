@@ -24,15 +24,15 @@
         @enderror
     </div>
     <div class="position-absolute bottom-0 w-100">
-    <button class="btn btn-primary mt-5 w-100" wire:click="send">
-        <span class="mx-auto">
-            {{ __('general.send') }}
-        </span>
-    </button>
-    <button class="btn btn-warning mt-5 w-100" wire:click="$emit('HideSendMoney')">
-        <span class="mx-auto">
-            {{ __('general.cancel') }}
-        </span>
-    </button>
+        <button class="btn btn-primary mt-5 w-100" wire:click="send">
+                                                                        <span class="mx-auto">
+                                                                        {{ __('general.send') }}
+                                                                        </span>
+                                                                        </button>
+        <button class="btn btn-warning mt-5 w-100" wire:click="$emit('HideSendMoney')">
+            <span class="mx-auto">
+                {{ __('general.cancel') }}
+            </span>
+        </button>
     </div>
 </div>

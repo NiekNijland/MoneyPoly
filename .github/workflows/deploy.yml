@@ -1,0 +1,52 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ staging ]
+
+jobs:
+  dusk-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create .env file
+        run: cp .env.dusk.ci .env
+      - name: Install Composer Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Generate Application Key
+        run: php artisan key:generate
+      - name: Create .env.dusk file
+        run: cp .env .env.dusk
+      - name: Start MongoDB Server
+        uses: supercharge/mongodb-github-action@1.7.0
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver `/opt/google/chrome/chrome --version | cut -d " " -f3 | cut -d "." -f1`
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Run Laravel Server
+        run: php artisan serve --no-reload &
+      - name: Run Dusk Tests
+        env:
+          APP_URL: "http://127.0.0.1:8000"
+        run: php artisan dusk
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: console
+          path: tests/Browser/console
+  forge-deploy:
+    name: 'Laravel Forge Deploy'
+    needs: dusk-php
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: jbrooksuk/laravel-forge-action@v1.0.2
+        with:
+          trigger_url: ${{ secrets.STAGING_TRIGGER_URL }}

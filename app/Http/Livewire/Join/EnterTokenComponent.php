@@ -32,8 +32,7 @@ final class EnterTokenComponent extends Component
     {
         $this->validate();
 
-        $gameStatus = Game::where('status', GameStatus::Waiting()->value)
-            ->where('token', $this->token)
+        $gameStatus = Game::where('token', $this->token)
             ->select(['status'])
             ->first()->status ?? null;
 

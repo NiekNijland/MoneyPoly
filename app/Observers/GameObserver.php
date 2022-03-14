@@ -14,7 +14,7 @@ class GameObserver
 
     public function created(Game $game): void
     {
-        $game->settings()->associate(GameSettings::first());
+        $game->settings()->associate(GameSettings::firstOrFail());
         $game->save();
     }
 }

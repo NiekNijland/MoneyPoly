@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\PlayerRoleEnum;
 use App\Models\Base\User;
 use Hashids\Hashids;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Relations\BelongsTo;
 
 /**
@@ -21,6 +22,7 @@ class Player extends User
         'game_id',
         'role',
         'money',
+        'removed',
     ];
 
     public $casts = [

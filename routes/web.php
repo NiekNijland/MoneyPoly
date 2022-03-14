@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 
     //todo: remove 0
-    Route::group(['middleware' => 'role:0,1,2'], function() {
+    Route::group(['middleware' => ['game.active', 'role:0,1,2']], function() {
         Route::get('bank', [BankController::class, 'index'])->name('bank');
     });
 });

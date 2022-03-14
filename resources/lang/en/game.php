@@ -13,6 +13,7 @@ return [
     'start' => 'Start',
     'waiting_to_start' => 'Waiting to start...',
     'waiting_for_players' => 'Waiting for players...',
+    'player_removed' => 'Player removed',
 
     'enter_a_token_or' => 'Enter a token or',
     'create_a_game' => 'Create a game',

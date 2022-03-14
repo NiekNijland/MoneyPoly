@@ -9,10 +9,18 @@ final class BankController extends Controller
 {
     public function index(): View
     {
+        $player = Auth::user();
+
+        if ($player === null) {
+            abort(403);
+        }
+
         return view('pages.bank.index', [
-            'page_title' => Auth::user()->game->token,
-            'token' => Auth::user()->game->token,
-            'playerCount' => Auth::user()->game->players()->count(),
+            'page_title' => $player->game->token,
+            'token' => $player->game->token,
+            'playerCount' => $player->game->players()->count(),
+            'players' => $player->game->players,
+            'game' => $player->game,
         ]);
     }
 }
